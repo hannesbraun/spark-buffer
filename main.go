@@ -25,8 +25,8 @@ func main() {
 	port := *portFlag
 	monitorOutPort := *monitorPortFlag
 
-	toMonitor := make(chan []byte)
-	toServer := make(chan []byte)
+	toMonitor := make(chan []byte, 1000)
+	toServer := make(chan []byte, 1000)
 
 	go acceptIncomingConnection(int(monitorOutPort), toMonitor, toServer)
 
